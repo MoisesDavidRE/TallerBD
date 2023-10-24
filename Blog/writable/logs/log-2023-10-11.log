@@ -1,0 +1,35 @@
+CRITICAL - 2023-10-11 15:06:18 --> Class "ZipArchive" not found
+in APPPATH\Controllers\DumpController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DumpController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DumpController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Moisés David\\Desktop\\QUINTO SEMESTRE\\TALLER DE BASE DE DATOS\\Unidad II\\Blog\\public\\index.php')
+CRITICAL - 2023-10-11 15:06:38 --> Class "ZipArchive" not found
+in APPPATH\Controllers\DumpController.php on line 27.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DumpController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DumpController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Moisés David\\Desktop\\QUINTO SEMESTRE\\TALLER DE BASE DE DATOS\\Unidad II\\Blog\\public\\index.php')
+CRITICAL - 2023-10-11 15:07:03 --> Class "ZipArchive" not found
+in APPPATH\Controllers\DumpController.php on line 27.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DumpController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DumpController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Moisés David\\Desktop\\QUINTO SEMESTRE\\TALLER DE BASE DE DATOS\\Unidad II\\Blog\\public\\index.php')
+CRITICAL - 2023-10-11 21:12:13 --> Class "App\Controllers\DateTime" not found
+in APPPATH\Controllers\DumpController.php on line 23.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DumpController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DumpController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Moisés David\\Desktop\\QUINTO SEMESTRE\\TALLER DE BASE DE DATOS\\Unidad II\\Blog\\public\\index.php')
+CRITICAL - 2023-10-11 21:30:00 --> Call to undefined function App\Controllers\file_dialog()
+in APPPATH\Controllers\DumpController.php on line 35.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DumpController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DumpController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Moisés David\\Desktop\\QUINTO SEMESTRE\\TALLER DE BASE DE DATOS\\Unidad II\\Blog\\public\\index.php')
