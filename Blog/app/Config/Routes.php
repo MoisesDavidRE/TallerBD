@@ -16,6 +16,6 @@ $routes->get('posts/ej6', 'PostController::ejercicio06');
 $routes->get('posts/ej7', 'PostController::ejercicio07');
 $routes->get('posts/ej8', 'PostController::ejercicio08');
 $routes->get('posts/ej9', 'PostController::ejercicio09');
-$routes->get('posts/ej10', 'PostController::ejercicio010');
-$routes->get('posts/dump', 'DumpController::index');
+$routes->get('posts/ej10', 'PostController::ejercicio10');
+$routes->get('posts/dump', 'PostController::dump');
 

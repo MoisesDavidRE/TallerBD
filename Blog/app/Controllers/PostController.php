@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Controllers\BaseController;
 
 class PostController extends BaseController
 {
     public function ejercicio01()
     {
-        $db= \Config\Database::connect();
+        $db = \Config\Database::connect();
         $posts = $db->query('select c.category, p.id,
         p.title, u.username, p.created_at from categories as c right 
         join posts as p on p.category = c.id left join
@@ -15,18 +16,19 @@ class PostController extends BaseController
          and "2023/12/31"')->getResultArray();
 
 
-        $data =[
-            'posts'=>$posts
+        $data = [
+            'posts' => $posts
 
         ];
-        
-        return view('posts/ejercicio01',$data);
+
+        return view('posts/ejercicio01', $data);
     }
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio02(){
+    //---------------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio02()
+    {
         $db = \Config\Database::connect();
-        
+
         $posts = $db->query('select p.title, concat(ui.name," ",ui.lastname) as "nombreCompleto", 
         p.category, p.created_at from posts as p 
         left join users as u on p.autor = u.id 
@@ -34,14 +36,15 @@ class PostController extends BaseController
         order by p.category desc, p.created_at desc limit 1')->getResultArray();
 
         $data = [
-            'posts'=>$posts
+            'posts' => $posts
         ];
-    
+
         //dd($posts, $p,$u,$ui);
         return view('posts/ejercicio02', $data);
     }
-//-------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio03(){
+    //-------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio03()
+    {
         $db = \Config\Database::connect();
         $posts = $db->query('select concat(ui.name," ",ui.lastname) as
         "nombreCompleto",ui.website,ui.phone, p.title, p.status from posts as p 
@@ -50,16 +53,17 @@ class PostController extends BaseController
         where p.status=0')->getResultArray();
 
         $data = [
-            'posts'=>$posts
+            'posts' => $posts
         ];
-    
+
         //dd($posts,$p,$u,$ui);        
         return view('posts/ejercicio03', $data);
     }
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio04(){
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio04()
+    {
         $db = \Config\Database::connect();
-        
+
         $posts = $db->query('select u.username, concat(ui.name," ",ui.lastname) as 
         "nombreCompleto", ui.website, ui.gender, p.created_at from posts as p 
         left join users as u on p.autor = u.id 
@@ -67,56 +71,59 @@ class PostController extends BaseController
         where p.created_at between "2023/01/01" and "2023/12/31"')->getResultArray();
 
         $data = [
-            'posts'=>$posts
+            'posts' => $posts
         ];
-    
+
         //dd($posts,$p,$u,$ui);        
         return view('posts/ejercicio04', $data);
     }
 
-//-------------------------------------------------------------------------------------------------------------------
-public function ejercicio05(){
-    $db = \Config\Database::connect();
-    $totalUsers = $db->query('select count(*) from users')->getResult();
-    $totalUsers= json_decode(json_encode($totalUsers),true);
-    
-    $totalPosts = $db->query('select count(*) from posts')->getResult();
-    $totalPosts= json_decode(json_encode($totalPosts),true);
+    //-------------------------------------------------------------------------------------------------------------------
+    public function ejercicio05()
+    {
+        $db = \Config\Database::connect();
+        $totalUsers = $db->query('select count(*) from users')->getResult();
+        $totalUsers = json_decode(json_encode($totalUsers), true);
 
-    $totalComments = $db->query('select count(*) from comments')->getResult();
-    $totalComments= json_decode(json_encode($totalComments),true);
+        $totalPosts = $db->query('select count(*) from posts')->getResult();
+        $totalPosts = json_decode(json_encode($totalPosts), true);
 
-    $totalCategories = $db->query('select count(*) from categories')->getResult();
-    $totalCategories= json_decode(json_encode($totalCategories),true);
+        $totalComments = $db->query('select count(*) from comments')->getResult();
+        $totalComments = json_decode(json_encode($totalComments), true);
 
-    $data=[
-        'totalUsers' => $totalUsers,
-        'totalPosts' => $totalPosts,
-        'totalComments' => $totalComments,
-        'totalCategories' =>$totalCategories
-    ];
-    
+        $totalCategories = $db->query('select count(*) from categories')->getResult();
+        $totalCategories = json_decode(json_encode($totalCategories), true);
 
-    return view('posts/ejercicio05', $data);
-}
+        $data = [
+            'totalUsers' => $totalUsers,
+            'totalPosts' => $totalPosts,
+            'totalComments' => $totalComments,
+            'totalCategories' => $totalCategories
+        ];
 
-//----------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio06(){
+
+        return view('posts/ejercicio05', $data);
+    }
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio06()
+    {
         $db = \Config\Database::connect();
         $postsPorCategoria = $db->query('select category, count(*) as "ppc" from categories group by category')->getResultArray();
         $postPorAutor = $db->query('select username, count(*) as "ppa" from users group by username')->getResultArray();
-        
+
         $data = [
             'postsPorCategoria' => $postsPorCategoria,
             'postPorAutor' => $postPorAutor
         ];
-        
+
         //dd($postsPorCategoria,$postPorAutor);
         return view('posts/ejercicio06', $data);
     }
 
-//--------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio07(){
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio07()
+    {
         $db = \Config\Database::connect();
         $postsMujer2022 = $db->query('select count(*) from posts as p 
                             left join users as u on p.autor = u.id
@@ -134,35 +141,37 @@ public function ejercicio05(){
                             left join users as u on p.autor = u.id
                             left join userinfo as ui on u.id = ui.id 
                             where p.created_at like "%2022%" and ui.gender = "m"')->getResultArray();
-        
+
         $data = [
-            'postsHombre2022'=>$postsHombre2022,
-            'postsHombre2023'=>$postsHombre2023,
-            'postsMujer2023'=>$postsMujer2023,
-            'postsMujer2022'=>$postsMujer2022
+            'postsHombre2022' => $postsHombre2022,
+            'postsHombre2023' => $postsHombre2023,
+            'postsMujer2023' => $postsMujer2023,
+            'postsMujer2022' => $postsMujer2022
         ];
         //dd($postsMujer2022,$postsMujer2023,$postsHombre2022,$postsHombre2023);
         return view('posts/ejercicio07', $data);
 
     }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio08(){
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio08()
+    {
         $db = \Config\Database::connect();
         $postsPorCategoria = $db->query('select category, count(*) as "ppc" from categories group by category order by count(*) asc')->getResultArray();
         $postPorAutor = $db->query('select username, count(*) as "ppa" from users group by username order by count(*) asc')->getResultArray();
 
-        $data =[
-            'postsPorCategoria'=>$postsPorCategoria,
-            'postPorAutor'=>$postPorAutor
+        $data = [
+            'postsPorCategoria' => $postsPorCategoria,
+            'postPorAutor' => $postPorAutor
         ];
 
         //dd($postsPorCategoria,$postPorAutor);
         return view('posts/ejercicio08', $data);
     }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio09(){
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio09()
+    {
         $db = \Config\Database::connect();
         $posts = $db->query('select p.title,p.content,c.category,pf.profile from posts as p
                             left join users as u on p.autor=u.id
@@ -174,18 +183,19 @@ public function ejercicio05(){
         //$pf=$db->query('select * from profiles limit 20')->getResultArray();
         //$c=$db->query('select * from categories limit 20')->getResultArray();
 
-        $data=[
-            'posts'=>$posts
+        $data = [
+            'posts' => $posts
         ];
 
         //dd($posts,$p,$u,$pf,$c);
         return view('posts/ejercicio09', $data);
     }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public function ejercicio10(){
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public function ejercicio10()
+    {
         $db = \Config\Database::connect();
-        $posts=$db->query('select id,title,content,created_at from posts')->getResultArray();
+        $posts = $db->query('select id,title,content,created_at from posts')->getResultArray();
         $postsM = $db->query('select u.username, ui.gender,ui.birthday,max(p.id) as "ultimoPost"from posts as p
                             left join users as u on p.autor =u.id
                             left join userinfo as ui on u.id=ui.id
@@ -198,26 +208,26 @@ public function ejercicio05(){
         //$u=$db->query('select * from users order by username asc limit 20')->getResultArray();
         //$ui=$db->query('select * from userinfo limit 1000')->getResultArray();
 
-        $data=[
-            'posts'=>$posts,
-            'postsM'=>$postsM,
-            'postsH'=>$postsH
+        $data = [
+            'posts' => $posts,
+            'postsM' => $postsM,
+            'postsH' => $postsH
         ];
         //dd($posts,$postsM,$postsH);
         return view('posts/ejercicio10', $data);
     }
-
+// public function ejercicio11()                       
     public function dump()
     {
         $db = \Config\Database::connect();
 
-            // Nombre del archivo de respaldo
+            // Nombre y ruta del archivo de respaldo
         $RutaGuardar = 'C:\Users\Moisés David\Desktop\blog.sql';
         $rutaActual = getcwd();
-        chdir('../../../../../Program Files/MySQL/MySQL Workbench 8.0');
+        chdir('../../../../../../Program Files/MySQL/MySQL Workbench 8.0');
         $rutaModificada = getcwd();  
             // Comando para exportar la base de datos
-        $command = 'mysqldump -u root estudiantec > "C:\Users\Moisés David\Desktop\blog.sql"';
+        $command = 'mysqldump -u david -p1234 estudiantec > "C:\Users\Moisés David\Desktop\blog.sql"';
         // mysqldump -u root -p estudiantec > "C:\Users\Moisés David\Desktop\estudiantec.sql"
             // Ejecutar el comando
         exec($command);
@@ -225,5 +235,19 @@ public function ejercicio05(){
             echo 'Ruta actual: '.$rutaActual . '<br>';
             echo 'Ruta modificada: ' . $rutaModificada . '<br>';
     }
-}
+    // public function dump()
+    // {
+    //     $db = \Config\Database::connect();
 
+    //     $backupFile = 'respaldo/respaldo.sql';
+    //     $Ruta = 'C:\xampp\mysql\bin\mysqldump.exe';
+    //     $command = $Ruta . '-u root blog > respaldo/respaldo.sql';
+    //     exec($command);
+    //     if (file_exists($backupFile)) {
+    //         $this->response->download($backupFile, null)->setFileName('Base_exportada.sql');
+    //         return $this->response;
+    //     }else {
+    //         return "Error al exportar la base de datos.";
+    //     }
+    // }
+}
